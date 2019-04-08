@@ -1,0 +1,93 @@
+.container {
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: auto;
+  overflow: hidden;
+
+  &--flex {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+// section Title & paragraf
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+
+  &--white {
+    color: #fff;
+  }
+}
+.text {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #000;
+
+  &--white {
+    color: #fff;
+  }
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  transition: all 0.5s 2rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 300;
+  box-shadow: 1px 2px 6px 0px rgb(107, 107, 107);
+  
+  &:hover {
+    opacity: 0.9;
+    color: #fff;
+  }
+  &--orange {
+    background-color: $main-color;
+  }
+  &--blue {
+    background-color: #5585a2;
+  }
+  &--green {
+    background-color: #96b92c;
+  }
+  &--red {
+    background-color: #f72b3b;
+  }
+}
+.mb {
+  &-1 {
+    margin-bottom: 1rem;
+  }
+  &-2 {
+    margin-bottom: 2rem;
+  }
+  &-3 {
+    margin-bottom: 3rem;
+  }
+}
+.py {
+  &-1 {
+    padding: 1rem 0;
+  }
+  &-2 {
+    padding: 2rem 0;
+  }
+  &-3 {
+    padding: 3rem 0;
+  }
+  &-4 {
+    padding: 4rem 0;
+  }
+  &-5 {
+    padding: 5rem 0;
+  }
+}

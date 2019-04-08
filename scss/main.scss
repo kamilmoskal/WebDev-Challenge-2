@@ -1,0 +1,427 @@
+@import "./variables";
+@import "./utillities";
+@import "./mobile-toggler";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+button,
+a {
+  all: unset;
+}
+body {
+  font-family: "Raleway", sans-serif;
+  line-height: 1.4;
+  scroll-behavior: smooth;
+}
+ul {
+  list-style: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 15px;
+}
+
+// Nav
+.nav {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 10;
+  transition: all .5s ease;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__logo-link {
+    margin: auto 0;
+  }
+  &__logo-img {
+    width: 90%;
+    transition: all 0.5s ease;
+
+    &.scrolled {
+      width: 70%;
+    }
+  }
+  &__list {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+    &.active {
+      left: 0;
+    }
+  }
+  &__item {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+  &__link {
+    font-weight: 700;
+    display: block;
+    position: relative;
+    color: #000;
+    padding: 0.5rem 0;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      transition: all 0.5s ease;
+    }
+
+    &[data-link="home"].active:after,
+    &[data-link="home"]:hover:after {
+      background-color: $main-color;
+      width: 70px;
+    }
+    &[data-link="about"].active:after,
+    &[data-link="about"]:hover:after {
+      background-color: $about-color;
+      width: 70px;
+    }
+    &[data-link="services"].active:after,
+    &[data-link="services"]:hover:after {
+      background-color: $services-color;
+      width: 70px;
+    }
+    &[data-link="gallery"].active:after,
+    &[data-link="gallery"]:hover:after {
+      background-color: $gallery-color;
+      width: 70px;
+    }
+    &[data-link="blog"].active:after,
+    &[data-link="blog"]:hover:after {
+      background-color: $blog-color;
+      width: 70px;
+    }
+    &[data-link="contact"].active:after,
+    &[data-link="contact"]:hover:after {
+      background-color: $contact-color;
+      width: 70px;
+    }
+  }
+}
+
+// Header
+.header {
+  background: url("../img/bg_header.jpg") no-repeat center/cover;
+  height: 100vh;
+  position: relative;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  &__text {
+    width: 75%;
+  }
+  &__img-scroll {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    animation: move 1s alternate infinite ease-in-out;
+    transition: all 1s ease;
+
+    @keyframes move {
+      to {
+        bottom: 12%;
+      }
+    }
+  }
+}
+
+// Section A: About
+.about {
+  background: $about-color;
+  position: relative;
+  overflow: hidden;
+
+  &__img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: -55%;
+    transform: translateY(-50%);
+  }
+  &__title {
+    text-align: right;
+  }
+  &__text {
+    width: 70%;
+    margin-left: auto;
+    text-align: right;
+  }
+}
+
+// Section B: Services
+.services {
+  background: $services-color;
+  position: relative;
+  overflow: hidden;
+
+  &__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+  }
+  &__title {
+    position: relative;
+  }
+  .card {
+    background-color: #fff;
+    position: relative;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10px;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 1px 2px 6px 0px rgb(107, 107, 107);
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: #000;
+      transition: all 0.5s ease;
+    }
+    &:hover:before {
+      height: 100%;
+    }
+
+    &__title {
+      margin: 0;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      mix-blend-mode: difference;
+    }
+    &__icon {
+      width: 90%;
+    }
+  }
+}
+
+// Section C: Gallery
+.gallery {
+  background: $gallery-color;
+  transition: all 1s ease;
+
+  .grid {
+    display: grid;
+    grid-gap: 1rem;
+    margin: 1rem 0;
+    &__item {
+      overflow: hidden;
+      animation: slide-up 0.4s ease;
+    }
+    &__img {
+      width: 100%;
+      transition: all 0.5s ease;
+      &:hover {
+        transform: scale(1.2) rotate(5deg);
+      }
+    }
+  }
+}
+
+//Section D: Subscribe
+.subscribe {
+  position: relative;
+  overflow: hidden;
+
+  &__img {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translate(-50%, -60%);
+    z-index: -1;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  &__input {
+    width: 100%;
+    border: 1px solid #000;
+    padding: 1rem 1rem;
+    margin: 1rem 0;
+    font-family: inherit;
+    font-weight: 300;
+    font-size: 1rem;
+  }
+}
+
+//Section E: Blog
+.blog {
+  background: $blog-color no-repeat center/cover;
+
+  .grid-blog {
+    display: grid;
+    grid-gap: 1rem;
+    margin: 1rem 0;
+
+    &__item {
+      position: relative;
+      color: white;
+      animation: slide-up 0.4s ease;
+    }
+    &__img {
+      width: 100%;
+    }
+    &__date {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.5rem;
+      border-radius: 5px;
+
+      span {
+        display: block;
+        font-size: 1.2rem;
+      }
+    }
+    &__content {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      padding: 0 1rem;
+      background: linear-gradient(transparent, #000);
+    }
+    &__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    &__meta {
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+  }
+}
+
+//Section F: Contact
+.contact {
+  background: url("../img/contact_bg.jpg") no-repeat center/cover;
+  position: relative;
+  overflow: hidden;
+
+  .grid-contact {
+    .form {
+      margin-bottom: 3rem;
+      label {
+        display: none;
+      }
+      &__name,
+      &__email,
+      &__phone,
+      &__message {
+        border: none;
+        background-color: rgba($about-color, 0.5);
+        color: #fff;
+        width: 100%;
+        padding: 0.6rem 1.2rem;
+        margin: 0.5rem 0;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+      &__name:focus,
+      &__email:focus,
+      &__phone:focus,
+      &__message:focus {
+        border-left: 5px solid #355b82;
+      }
+      &__message {
+        resize: none;
+        height: 240px;
+      }
+      ::placeholder {
+        opacity: 1;
+      }
+    }
+    .contact-data {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1rem;
+      &__title {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      &__text {
+        font-size: 1.25rem;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+//Footer
+.footer {
+  background: $contact-color;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #b9b9b9;
+
+  &__logo {
+    margin-bottom: 1rem;
+  }
+  &__signature {
+    span {
+      color: #ff2b58;
+    }
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@import "./media";
